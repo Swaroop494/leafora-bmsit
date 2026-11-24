@@ -11,7 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CaptureRouteImport } from './routes/capture'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as MapRouteImport } from './routes/map'
+import { Route as MethodRouteImport } from './routes/method'
+import { Route as RoadmapRouteImport } from './routes/roadmap'
+import { Route as TreesIdRouteImport } from './routes/trees.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,40 +27,86 @@ const CaptureRoute = CaptureRouteImport.update({
   path: '/capture',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MapRoute = MapRouteImport.update({
   id: '/map',
   path: '/map',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MethodRoute = MethodRouteImport.update({
+  id: '/method',
+  path: '/method',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoadmapRoute = RoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TreesIdRoute = TreesIdRouteImport.update({
+  id: '/trees/$id',
+  path: '/trees/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/capture': typeof CaptureRoute
+  '/login': typeof LoginRoute
   '/map': typeof MapRoute
+  '/method': typeof MethodRoute
+  '/roadmap': typeof RoadmapRoute
+  '/trees/$id': typeof TreesIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/capture': typeof CaptureRoute
+  '/login': typeof LoginRoute
   '/map': typeof MapRoute
+  '/method': typeof MethodRoute
+  '/roadmap': typeof RoadmapRoute
+  '/trees/$id': typeof TreesIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/capture': typeof CaptureRoute
+  '/login': typeof LoginRoute
   '/map': typeof MapRoute
+  '/method': typeof MethodRoute
+  '/roadmap': typeof RoadmapRoute
+  '/trees/$id': typeof TreesIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/capture' | '/map'
+  fullPaths:
+    '/' | '/capture' | '/login' | '/map' | '/method' | '/roadmap' | '/trees/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/capture' | '/map'
-  id: '__root__' | '/' | '/capture' | '/map'
+  to:
+    '/' | '/capture' | '/login' | '/map' | '/method' | '/roadmap' | '/trees/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/capture'
+    | '/login'
+    | '/map'
+    | '/method'
+    | '/roadmap'
+    | '/trees/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CaptureRoute: typeof CaptureRoute
+  LoginRoute: typeof LoginRoute
   MapRoute: typeof MapRoute
+  MethodRoute: typeof MethodRoute
+  RoadmapRoute: typeof RoadmapRoute
+  TreesIdRoute: typeof TreesIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,11 +125,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaptureRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/map': {
       id: '/map'
       path: '/map'
       fullPath: '/map'
       preLoaderRoute: typeof MapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/method': {
+      id: '/method'
+      path: '/method'
+      fullPath: '/method'
+      preLoaderRoute: typeof MethodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roadmap': {
+      id: '/roadmap'
+      path: '/roadmap'
+      fullPath: '/roadmap'
+      preLoaderRoute: typeof RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trees/$id': {
+      id: '/trees/$id'
+      path: '/trees/$id'
+      fullPath: '/trees/$id'
+      preLoaderRoute: typeof TreesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -88,7 +166,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CaptureRoute: CaptureRoute,
+  LoginRoute: LoginRoute,
   MapRoute: MapRoute,
+  MethodRoute: MethodRoute,
+  RoadmapRoute: RoadmapRoute,
+  TreesIdRoute: TreesIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
