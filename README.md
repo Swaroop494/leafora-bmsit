@@ -45,14 +45,14 @@ public/                # Static assets served at root
 
 ## Available Scripts
 
-| Script        | Description                              |
-| ------------- | ---------------------------------------- |
-| `npm run dev` | Start the development server             |
-| `npm run build` | Build the production bundle             |
+| Script            | Description                          |
+| ----------------- | ------------------------------------ |
+| `npm run dev`     | Start the development server         |
+| `npm run build`   | Build the production bundle          |
 | `npm run preview` | Preview the production build locally |
-| `npm run lint` | Run the linter                           |
-| `npm run format` | Format code with Prettier              |
-| `npm run test` | Run the test suite                       |
+| `npm run lint`    | Run the linter                       |
+| `npm run format`  | Format code with Prettier            |
+| `npm run test`    | Run the test suite                   |
 
 ## Contributing
 
