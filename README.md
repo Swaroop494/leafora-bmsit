@@ -1,24 +1,67 @@
 # EVS Mini Project
 
-Don't make the entire interface ethereal or sketch-based. Use a luxury editorial foundation, earthy visual identity, and conceptual/ethereal elements selectively.
+Geo-tagged campus tree inventory with AI health screening and carbon estimates.
 
-This project was built with [Lovable](https://lovable.dev).
+## Getting Started
 
-## Build with Lovable
+### Prerequisites
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/b8bcad58-d389-4e28-b903-0189e3061c87).
+- [Node.js](https://nodejs.org/) (v18 or later)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+### Installation
 
 ```sh
 git clone <this-repository-url>
 cd <repository-name>
-npm i
+npm install
+```
+
+### Running Locally
+
+```sh
 npm run dev
 ```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Building for Production
+
+```sh
+npm run build
+npm run preview
+```
+
+## Project Structure
+
+```
+src/
+├── components/        # Reusable UI components
+├── lib/               # Utility functions and helpers
+├── routes/            # Page routes (TanStack Router)
+└── styles.css         # Global styles
+public/                # Static assets served at root
+```
+
+## Available Scripts
+
+| Script        | Description                              |
+| ------------- | ---------------------------------------- |
+| `npm run dev` | Start the development server             |
+| `npm run build` | Build the production bundle             |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run the linter                           |
+| `npm run format` | Format code with Prettier              |
+| `npm run test` | Run the test suite                       |
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/my-feature`)
+3. Commit your changes (`git commit -m 'Add some feature'`)
+4. Push to the branch (`git push origin feature/my-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
