@@ -6,7 +6,10 @@ function Seed() {
   const mesh = useRef<Mesh>(null);
   const pts = useRef<Points>(null);
   useFrame((_, d) => {
-    if (mesh.current) { mesh.current.rotation.y += d * 0.12; mesh.current.rotation.x += d * 0.04; }
+    if (mesh.current) {
+      mesh.current.rotation.y += d * 0.12;
+      mesh.current.rotation.x += d * 0.04;
+    }
     if (pts.current) pts.current.rotation.y -= d * 0.05;
   });
   return (
@@ -25,7 +28,11 @@ function Seed() {
 
 export default function HeroOrb() {
   return (
-    <Canvas camera={{ position: [0, 0, 5], fov: 45 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
+    <Canvas
+      camera={{ position: [0, 0, 5], fov: 45 }}
+      dpr={[1, 1.5]}
+      gl={{ antialias: true, alpha: true }}
+    >
       <Seed />
     </Canvas>
   );
