@@ -1,5 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ClientOnly } from "@tanstack/react-router";
+import { ClientOnly, createFileRoute, Link } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 import { LeafSketch } from "@/components/LeafSketch";
 import { Reveal } from "@/components/Reveal";
@@ -47,35 +46,61 @@ function Index() {
     <>
       <section className="grain relative overflow-hidden">
         <div className="aura absolute inset-0" aria-hidden="true" />
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-5 pb-24 pt-14 md:grid-cols-12 md:px-10 md:pt-24">
-          <Reveal className="md:col-span-7">
-            <p className="reveal eyebrow text-primary">
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-14 px-5 pb-20 pt-16 md:grid-cols-12 md:gap-8 md:px-10 md:pb-28 md:pt-24">
+          <div className="md:col-span-7">
+            <p className="enter eyebrow text-primary">
               Campus Tree Health · Inventory & Geo-Tagging Log
             </p>
-            <h1 className="reveal mt-6 text-6xl leading-[0.9] md:text-[7.5rem]">
+            <h1 className="enter enter-d1 mt-6 text-balance text-[3.35rem] leading-[0.88] tracking-tight md:text-[6.6rem]">
               Trees work hard.
               <br />
               <em className="text-copper">Let&rsquo;s keep</em> the record.
             </h1>
-            <p className="reveal mt-8 max-w-md text-lg text-muted-foreground">
+            <p className="enter enter-d2 mt-8 max-w-md text-pretty text-lg leading-relaxed text-muted-foreground">
               Mapping, monitoring and protecting our green infrastructure with AI — geo-tagged
               inventory, health screening and carbon estimates.
             </p>
-            <div className="reveal mt-10 flex flex-wrap gap-3">
+            <div className="enter enter-d3 mt-10 flex flex-wrap gap-3">
               <Link
                 to="/capture"
-                className="rounded-sm bg-primary px-6 py-3 text-primary-foreground shadow-lift transition-transform hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2.5 rounded-sm bg-primary px-6 py-3.5 text-primary-foreground shadow-lift transition-[transform,background-color] duration-300 ease-out hover:-translate-y-0.5 hover:bg-primary/90"
               >
                 Frame a leaf
+                <span
+                  aria-hidden="true"
+                  className="transition-transform duration-300 ease-out group-hover:translate-x-1"
+                >
+                  →
+                </span>
               </Link>
               <Link
                 to="/map"
-                className="rounded-sm border border-foreground/30 px-6 py-3 transition-colors hover:bg-ink hover:text-ink-foreground"
+                className="group inline-flex items-center gap-2.5 rounded-sm border border-foreground/30 px-6 py-3.5 transition-[transform,background-color,color] duration-300 ease-out hover:-translate-y-0.5 hover:bg-ink hover:text-ink-foreground"
               >
                 Explore the campus map
+                <span
+                  aria-hidden="true"
+                  className="transition-transform duration-300 ease-out group-hover:translate-x-1"
+                >
+                  →
+                </span>
               </Link>
             </div>
-          </Reveal>
+            <dl className="enter enter-d4 mt-14 grid max-w-lg grid-cols-3 gap-6 border-t border-foreground/15 pt-6">
+              <div>
+                <dt className="eyebrow text-muted-foreground">Campus</dt>
+                <dd className="mt-2 font-display text-2xl leading-none">BMSIT</dd>
+              </div>
+              <div>
+                <dt className="eyebrow text-muted-foreground">Objectives</dt>
+                <dd className="mt-2 font-display text-2xl leading-none">06</dd>
+              </div>
+              <div>
+                <dt className="eyebrow text-muted-foreground">Field steps</dt>
+                <dd className="mt-2 font-display text-2xl leading-none">04</dd>
+              </div>
+            </dl>
+          </div>
           <div className="relative h-[420px] md:col-span-5 md:h-[560px]">
             <div className="absolute inset-0">
               <ClientOnly fallback={null}>
@@ -84,7 +109,7 @@ function Index() {
                 </Suspense>
               </ClientOnly>
             </div>
-            <LeafSketch className="absolute inset-x-8 inset-y-6 opacity-80" />
+            <LeafSketch className="pointer-events-none absolute inset-x-8 inset-y-6 opacity-80" />
             <p className="eyebrow absolute bottom-0 right-0 text-muted-foreground">
               Fig. 1 — Neem, leaf study
             </p>
@@ -92,7 +117,7 @@ function Index() {
         </div>
       </section>
 
-      <Reveal as="section" className="mx-auto max-w-7xl px-5 py-24 md:px-10">
+      <Reveal as="section" className="mx-auto max-w-7xl px-5 py-28 md:px-10">
         <p className="reveal eyebrow text-primary">The monitoring gap</p>
         <div className="mt-6 grid gap-12 md:grid-cols-2">
           <h2 className="reveal text-4xl leading-tight md:text-6xl">
@@ -120,24 +145,27 @@ function Index() {
       </Reveal>
 
       <section className="bg-ink text-ink-foreground">
-        <Reveal className="mx-auto max-w-7xl px-5 py-24 md:px-10">
+        <Reveal className="mx-auto max-w-7xl px-5 py-28 md:px-10">
           <p className="reveal eyebrow text-primary">Project objectives</p>
           <h2 className="reveal mt-4 max-w-3xl text-4xl md:text-6xl">
             From four problems to six objectives.
           </h2>
           <div className="mt-14 grid gap-px bg-ink-foreground/15 sm:grid-cols-2 lg:grid-cols-3">
             {objectives.map(([n, t, d]) => (
-              <div key={n} className="reveal bg-ink p-8">
+              <div
+                key={n}
+                className="reveal bg-ink p-8 transition-colors duration-500 ease-out hover:bg-white/8"
+              >
                 <span className="font-mono text-sm text-primary">{n}</span>
-                <h3 className="mt-6 text-2xl">{t}</h3>
-                <p className="mt-2 text-sm opacity-70">{d}</p>
+                <h3 className="mt-8 text-2xl tracking-tight">{t}</h3>
+                <p className="mt-3 max-w-xs text-sm leading-relaxed opacity-70">{d}</p>
               </div>
             ))}
           </div>
         </Reveal>
       </section>
 
-      <Reveal as="section" className="mx-auto max-w-7xl px-5 py-24 md:px-10">
+      <Reveal as="section" className="mx-auto max-w-7xl px-5 py-28 md:px-10">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <p className="reveal eyebrow text-primary">The field experience</p>
@@ -149,17 +177,25 @@ function Index() {
           </div>
           <Link
             to="/capture"
-            className="reveal rounded-sm bg-primary px-6 py-3 text-primary-foreground"
+            className="reveal group inline-flex items-center gap-2.5 rounded-sm bg-primary px-6 py-3.5 text-primary-foreground transition-transform duration-300 ease-out hover:-translate-y-0.5"
           >
             Start a capture
+            <span
+              aria-hidden="true"
+              className="transition-transform duration-300 ease-out group-hover:translate-x-1"
+            >
+              →
+            </span>
           </Link>
         </div>
         <ol className="mt-14 grid gap-10 md:grid-cols-4">
           {steps.map(([n, t, d]) => (
-            <li key={n} className="reveal rule pt-6">
-              <span className="font-display text-6xl text-copper">{n}</span>
-              <h3 className="mt-4 text-2xl">{t}</h3>
-              <p className="mt-1 text-muted-foreground">{d}</p>
+            <li key={n} className="reveal rule group pt-6">
+              <span className="inline-block font-display text-6xl text-copper transition-transform duration-500 ease-out group-hover:-translate-y-1">
+                {n}
+              </span>
+              <h3 className="mt-5 text-2xl tracking-tight">{t}</h3>
+              <p className="mt-2 leading-relaxed text-muted-foreground">{d}</p>
             </li>
           ))}
         </ol>
@@ -174,16 +210,19 @@ function Index() {
             biomass: <b className="text-foreground">47 kg C · 172.5 kg CO₂e</b>.
           </p>
         </div>
-        <div className="reveal rounded-md border bg-card p-8 shadow-lift md:col-span-7">
-          <div className="flex items-baseline justify-between">
-            <h3 className="text-3xl">Neem</h3>
-            <span className="font-mono text-sm">92% confidence</span>
+        <div className="reveal rounded-md border bg-card p-8 shadow-lift transition-shadow duration-500 hover:shadow-[0_28px_70px_-32px_oklch(0.19_0.03_170_/_55%)] md:col-span-7 md:p-10">
+          <div className="flex items-baseline justify-between gap-4">
+            <h3 className="text-3xl tracking-tight">Neem</h3>
+            <span className="font-mono text-sm tabular-nums">92% confidence</span>
           </div>
           <div className="mt-8 flex items-end gap-4">
-            <span className="font-display text-8xl leading-none">74</span>
+            <span className="font-display text-8xl leading-none tabular-nums">74</span>
             <span className="pb-3 text-muted-foreground">
               / 100 · <b className="text-watch">Watch</b>
             </span>
+          </div>
+          <div className="mt-6 h-1 overflow-hidden rounded-full bg-muted" aria-hidden="true">
+            <div className="h-full w-[74%] rounded-full bg-watch" />
           </div>
           <p className="mt-6 rule pt-4">Early leaf spot · repeat scans support early detection.</p>
           <p className="mt-2 text-muted-foreground">
